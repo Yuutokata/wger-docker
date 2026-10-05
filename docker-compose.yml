@@ -112,6 +112,7 @@ services:
       retries: 5
       start_period: 30s
     networks:
+      - default
       - dokploy-network
     restart: unless-stopped
 
@@ -150,7 +151,9 @@ volumes:
 networks:
   default:
     name: wger_network
-
+  dokploy-network:
+    external: true
+    
 # If you get an "additional properties 'extends' not allowed"-error, your compose version
 # is too old (this needs at least 5.x). If you remove the "db" and "redis" services from
 # this file, you should be able to start the stack.
